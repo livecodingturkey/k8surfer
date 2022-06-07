@@ -17,16 +17,69 @@ public class Pod {
     @Id
     private String id;
 
-    private String name;
     private String apiVersion;
-    private List<PodContainer> containersOfThePod;
+    private Status status;
+    private String ip;
+    private MetaData metadata;
+    private Specification spec;
 
-    @AllArgsConstructor
     @Data
     @NoArgsConstructor
-    private static class PodContainer{
-        private String containerName;
-        private String containerImage;
+    @AllArgsConstructor
+    public static class Specification{
+
+        private List<Container> containers;
+
+        @AllArgsConstructor
+        @Data
+        @NoArgsConstructor
+        public static class Container{
+            private String name;
+            private String image;
+        }
+    }
+
+
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class MetaData{
+        private String generateName;
+        private String creationTimestamp;
+    }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class Status{
+
+        private String phase;
+        private String startTime;
+        private List<ContainerStatus> containerStatuses;
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Data
+        public static class ContainerStatus{
+            private String name;
+            private State state;
+
+            @Data
+            @NoArgsConstructor
+            @AllArgsConstructor
+            public static class State{
+
+                private Running running;
+                @Data
+                @NoArgsConstructor
+                @AllArgsConstructor
+                public static class Running{
+                    private String startedAt;
+                }
+            }
+        }
     }
 
 }
+
