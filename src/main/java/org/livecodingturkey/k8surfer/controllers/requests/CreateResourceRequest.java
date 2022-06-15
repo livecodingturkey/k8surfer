@@ -13,13 +13,9 @@ import java.util.Set;
 @NoArgsConstructor
 public class CreateResourceRequest {
 
-    @NotEmpty
-    private String id;
 
-    @NotEmpty
     private String name;
 
-    @NotEmpty
     private String apiVersion;
 
     private Kind kind;

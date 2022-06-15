@@ -1,7 +1,6 @@
 
 spring:
-  datasource:
-    url: jdbc:h2:mem:livecodingturkey
-    driver-class-name: org.h2.Driver
-  h2:
-    console.enabled: true
+  data:
+    mongodb:
+      uri: mongodb+srv://furkan:furkan@cluster0.n83xn.mongodb.net/?retryWrites=true&w=
+      database: Cluster0

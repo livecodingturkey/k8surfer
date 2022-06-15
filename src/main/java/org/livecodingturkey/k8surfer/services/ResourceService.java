@@ -6,6 +6,8 @@ import org.livecodingturkey.k8surfer.models.Resource;
 import org.livecodingturkey.k8surfer.repositories.ResourceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ResourceService {
@@ -18,5 +20,9 @@ public class ResourceService {
                 .kind(request.getKind().getValue())
                 .build();
         resourceRepository.save(resource);
+    }
+
+    public List<Resource> getAllResources(){
+        return resourceRepository.findAll();
     }
 }
