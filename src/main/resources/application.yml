@@ -2,5 +2,5 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://furkan:furkan@cluster0.n83xn.mongodb.net/?retryWrites=true&w=
-      database: Cluster0
+      host: localhost
+      port: 27017

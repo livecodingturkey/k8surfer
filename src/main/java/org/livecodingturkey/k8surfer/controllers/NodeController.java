@@ -1,31 +1,30 @@
 package org.livecodingturkey.k8surfer.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.livecodingturkey.k8surfer.models.Node;
 import org.livecodingturkey.k8surfer.services.NodeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/node")
+@RequestMapping("/nodes")
+@RequiredArgsConstructor
 public class NodeController {
+    private final NodeService nodeService;
 
-    @Autowired
-    private NodeService nodeService;
-
-    @GetMapping("/")
-    public Node getNodeDetailsByNodeId(@RequestParam String nodeId){
-        return nodeService.getNodeDetailsByNodeId(nodeId);
+    @GetMapping("/{id}")
+    public Node getNodeById(@PathVariable("id") String id){
+        return nodeService.getDetailsById(id);
     }
 
     @PostMapping
-    public Node addNode(@RequestBody Node node){
-        return nodeService.addPod(node);
+    public Node add(@RequestBody Node node){
+        return nodeService.add(node);
     }
 
-    @GetMapping("/getall")
-    public List<Node> getAllNodes(){
-        return nodeService.getAllNodes();
+    @GetMapping()
+    public List<Node> getAll(){
+        return nodeService.getAll();
     }
 }

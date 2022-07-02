@@ -1,26 +1,25 @@
 package org.livecodingturkey.k8surfer.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.livecodingturkey.k8surfer.models.Pod;
 import org.livecodingturkey.k8surfer.services.PodService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pod")
+@RequestMapping("/pods")
+@RequiredArgsConstructor
 public class PodController {
-
-    @Autowired
-    private PodService podService;
+    private final PodService podService;
 
     @GetMapping
-    public List<Pod> getAllPods(){
-        return podService.getAllPods();
+    public List<Pod> getAll(){
+        return podService.getAll();
     }
 
     @PostMapping
-    public boolean addPod(@RequestBody Pod pod){
-        return podService.addPod(pod);
+    public boolean add(@RequestBody Pod pod){
+        return podService.add(pod);
     }
 }
